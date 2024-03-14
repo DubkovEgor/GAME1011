@@ -1,0 +1,3 @@
+﻿  1try.cpp
+C:\Users\Egor\Desktop\1try\1try\1try.cpp(33,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  1try.vcxproj -> C:\Users\Egor\Desktop\1try\x64\Debug\1try.exe
