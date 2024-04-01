@@ -1,0 +1,3 @@
+﻿  Game1011_Assignment2.cpp
+C:\Users\Egor\Desktop\Semester 2\Programming\Game1011_Assignment2\Game1011_Assignment2\Game1011_Assignment2\Game1011_Assignment2.cpp(131,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Game1011_Assignment2.vcxproj -> C:\Users\Egor\Desktop\Semester 2\Programming\Game1011_Assignment2\Game1011_Assignment2\x64\Debug\Game1011_Assignment2.exe
