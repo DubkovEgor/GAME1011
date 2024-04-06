@@ -1,0 +1,4 @@
+﻿  Lab4_DubkovEgor.cpp
+C:\Users\Egor\Desktop\Lab4_DubkovEgor\Lab4_DubkovEgor\Lab4_DubkovEgor.cpp(46,51): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Egor\Desktop\Lab4_DubkovEgor\Lab4_DubkovEgor\Lab4_DubkovEgor.cpp(50,63): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Lab4_DubkovEgor.vcxproj -> C:\Users\Egor\Desktop\Lab4_DubkovEgor\x64\Debug\Lab4_DubkovEgor.exe
