@@ -583,6 +583,11 @@ int main()
                cout << "Enter a command ('Check inventory'): ";
                getline(cin, command);
                processInventoryCommand(command, player);
+               cout << "=========================================================" << endl;
+               cout << "" << endl;
+               cout << "You Won" << endl;
+               cout << "" << endl;
+               cout << "=========================================================" << endl;
 
                exit(0);
            }
