@@ -24,18 +24,66 @@ struct Enemy
 
 
 
-void processInventoryCommand(const string& command, Player& player) {
+void processInventoryCommand(const string& command, Player& player) 
+{
     if (command == "Take item") 
     {
-        string item;        
+        string item;
+        cout << "Enter item name: ";
+        getline(cin, item);
         player.inventory.push(item);
-        cout << "You took 'Magic Dave the epic stick'" << endl;
-        cout << "=========================================================" << endl;
-        cout << "Congratulations! You Won!" << endl;
-        cout << "=========================================================" << endl;
-        exit(0);
-    }       
-    else 
+        cout << "You took " << item << "." << endl;
+    }
+    else if (command == "Drop item") 
+    {
+        if (!player.inventory.empty()) 
+        {
+            string item = player.inventory.top();
+            player.inventory.pop();
+            cout << "You dropped " << item << "." << endl;
+        }
+        else 
+        {
+            cout << "Your inventory is empty." << endl;
+        }
+    }
+    else if (command == "Check inventory")
+    {
+        if (!player.inventory.empty()) 
+        {
+            cout << "Inventory contains:" << endl;
+            stack<string> temp = player.inventory;
+            while (!temp.empty()) 
+            {
+                cout << "- " << temp.top() << endl;
+                temp.pop();
+            }
+        }
+        else
+        {
+            cout << "Your inventory is empty." << endl;
+        }
+    }
+    else if (command == "Skip")
+    {
+
+    }
+   
+   
+   
+}
+
+void processTreasure(const string& command, Player& player)
+{
+    if (command == "Take treasure")
+    {
+        string item;
+        cout << "Enter item name: ";
+        getline(cin, item);
+        player.inventory.push(item);
+    }
+
+    else
     {
         cout << "You try to take it but you stumble and fall right on the weapon." << endl;
         cout << "You slightly touched it and almost immediately you can't feel anything." << endl;
@@ -44,7 +92,6 @@ void processInventoryCommand(const string& command, Player& player) {
         exit(0);
     }
 }
-
 void savePlayerAndEnemy(const Player& player, const Enemy& enemy, const string& filename)
 {
     ofstream outFile(filename, ios::binary);
@@ -170,7 +217,7 @@ void handleAfterEnemyDefeat(const string& command, Player& player)
     {
         cout << "=========================================================" << endl;
         cout << "You decide to have a look around. After careful inspection, you find a hidden trap and disable it." << endl;
-        cout << "Feeling safer, you proceed forward." << endl;       
+        cout << "Feeling safer, you proceed forward." << endl;
     }    
     if (!(userInput == "Enter chamber" || userInput == "Check entrance"))
     {
@@ -198,6 +245,7 @@ void roomOne(const string& command, Player& player)
         cout << "It perfectly fits the hole in the table and first thought is to lighten it up." << endl;
         cout << "When the candle wick almost burned down, the table engravings start to glow and the gate slowly covered in light." << endl;
         cout << "The gate opens and lead you to the next room." << endl;
+        cout << "You also see a new blade that appeared as the gates went up." << endl;
     }
 
     if (userInput == "Open gate")
@@ -410,6 +458,11 @@ int main()
                 }
             }
         }
+        cout << "You found a powerful weapon near the guardian's body. " << endl;
+        string command;
+        cout << "Enter a command ('Take item', 'Skip'): ";
+        getline(cin, command);
+        processInventoryCommand(command, player);
 
         char choice; 
         string userInput;
@@ -422,6 +475,10 @@ int main()
             string userInput;
             getline(cin, userInput);
             handleAfterEnemyDefeat(userInput, player);
+            string command;
+            cout << "Enter a command ('Take item', 'Drop item', 'Check inventory', 'Skip'): ";
+            getline(cin, command);
+            processInventoryCommand(command, player);
             if (player.health <= 0)
             {
                 gameOver = true;
@@ -443,6 +500,11 @@ int main()
            getline(cin, userInput);
            roomOne(userInput, player);
 
+           string command;
+           cout << "Enter a command ('Take item', 'Drop item', 'Check inventory', 'Skip'): ";
+           getline(cin, command);
+           processInventoryCommand(command, player);
+
            if (player.health <= 0)
            {
                gameOver = true;
@@ -463,6 +525,10 @@ int main()
            string userInput = "";      
            getline(cin, userInput);
            roomTwo(userInput, player);
+           string command;
+           cout << "Enter a command ('Take item', 'Drop item', 'Check inventory', 'Skip'): ";
+           getline(cin, command);
+           processInventoryCommand(command, player);
            if (player.health <= 0)
            {
                gameOver = true;
@@ -511,11 +577,14 @@ int main()
            {               
                lastFight(userInput, player, enemy, dialog);
                string command;
-               cout << "Enter a command ('Take item'): ";
+               cout << "Enter a command ('Take treasure'): ";
+               getline(cin, command);
+               processTreasure(command, player);
+               cout << "Enter a command ('Check inventory'): ";
                getline(cin, command);
                processInventoryCommand(command, player);
-               getline(cin, userInput);
-               break;
+
+               exit(0);
            }
        }
        else
