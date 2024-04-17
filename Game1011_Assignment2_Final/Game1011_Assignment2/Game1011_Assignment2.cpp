@@ -476,7 +476,7 @@ int main()
             getline(cin, userInput);
             handleAfterEnemyDefeat(userInput, player);
             string command;
-            cout << "Enter a command ('Take item', 'Drop item', 'Check inventory', 'Skip'): ";
+            cout << "Enter a command ('Drop item', 'Check inventory', 'Skip'): ";
             getline(cin, command);
             processInventoryCommand(command, player);
             if (player.health <= 0)
@@ -526,7 +526,7 @@ int main()
            getline(cin, userInput);
            roomTwo(userInput, player);
            string command;
-           cout << "Enter a command ('Take item', 'Drop item', 'Check inventory', 'Skip'): ";
+           cout << "Enter a command ('Drop item', 'Check inventory', 'Skip'): ";
            getline(cin, command);
            processInventoryCommand(command, player);
            if (player.health <= 0)

@@ -8,5 +8,4 @@ Guardian: "No... this cannot be! You may have defeated me, but you will never un
 
 With the Guardian defeated, you stand victorious within the temple's depths. The path to its treasures lies open before you.
 
-You're dead.
-
+You lost. You're dead.
